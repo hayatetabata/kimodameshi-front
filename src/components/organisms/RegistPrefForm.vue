@@ -25,7 +25,9 @@ export default {
         'preferences': preferences
       };
       var result = createMethod(params, '/api/pref', false, 'POST');//TODO handle response
-      console.log('result!');
+      console.log('Post prefs!!');
+
+      this.$router.push({name: "Submitted"});
     }
   },
   components: {

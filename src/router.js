@@ -31,6 +31,12 @@ export default new Router({
       props: true
     },
     {
+      path: '/submitted',
+      name: 'Submitted',
+      component: () => import('./page/Submitted.vue'),
+      props: true
+    },
+    {
       path: '/lounge/:lounge_id/members/:member_id/result',
       name: 'Result',
       component: () => import('./page/Result.vue'),
