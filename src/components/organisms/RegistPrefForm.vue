@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(id="self-member-id" :data-self-member-id="$route.params.member_id")
+    div(id="self-member-id" :data-self-member-id="member_id")
     MemberList
     RegistPrefButton(@submit="registPref")
 </template>
@@ -11,6 +11,9 @@ import RegistPrefButton from '../atoms/RegistPrefButton'
 import {createMethod} from '../../api/util'
 
 export default {
+  props: [
+      'member_id'
+  ],
   methods: {
     registPref() {
       var prefNodes = document.getElementsByClassName('draggable-item');

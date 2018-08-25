@@ -2,7 +2,7 @@
   div
     h1
       | Please order based on your preference
-    RegistPrefForm
+    RegistPrefForm(:member_id="member_id")
 </template>
 
 <script>
@@ -15,9 +15,9 @@ export default {
       // data
     }
   },
-  props: {
-    // props
-  },
+  props: [
+    'member_id'
+  ],
   methods: {
     // functions
   },
