@@ -1,20 +1,32 @@
 <template lang="pug">
   div(id="create-member")
-      form(id='form' @submit.prevent="register($event)")
-        img(:src="srcPath" id="thumbnail")
-        label 画像：
-          input(type="file" v-on:change="preview($event)" accept="image")
-        label 名前：
-          input(type="text" placeholder="Hayate Tabata" name="name" id="name")
-        button(type="submit") 登録
+    form(id='form' @submit.prevent="register($event)")
+      VueCropper(
+          ref="cropper"
+          :img="srcPath"
+          style="height:100px;"
+          :outputType="option.outputType"
+          )
+      img(:src="srcPath" id="thumbnail")
+      label 画像：
+        input(type="file" v-on:change="preview($event)" accept="image")
+      label 名前：
+        input(type="text" placeholder="Hayate Tabata" name="name" id="name")
+      button(type="submit") 登録
 </template>
 
 <script>
+import VueCropper from 'vue-cropper'
+
 export default {
   name: "CreateMember",
   data(){
     return {
-      srcPath: require('../assets/user.jpg')
+      srcPath: require('../assets/user.jpg'),
+      option: {
+        size: 1,
+        outputType: 'jpg',
+      }
     }
   },
   props: {
@@ -38,8 +50,10 @@ export default {
   },
   created(){
     // when created
+  },
+  components: {
+    VueCropper,
   }
-  
 }
 </script>
 
