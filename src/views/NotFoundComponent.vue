@@ -1,5 +1,4 @@
-<template>
-  <div class="about">
-    <h1>404 Not Found</h1>
-  </div>
+<template lang="pug">
+  div.about
+    h1 404 Not Found
 </template>
