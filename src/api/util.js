@@ -19,13 +19,12 @@ axios.interceptors.response.use(function (response) {
 export default {
     createMethod(data, endpoint, needSession, method) {
         let params = new URLSearchParams()
-        if (needSession) params.append('session', localStorage.getItem('session'))
+        // if (needSession) params.append('session', localStorage.getItem('session'))
         params.append('data', JSON.stringify(data))
         return axios({
-            method: 'post',
+            method: method,
             url: url.BASE_URL + endpoint,
-            data: params,
-            headers: { 'Q-HTTP-Method': method }
+            data: params
         })
     }
 }
