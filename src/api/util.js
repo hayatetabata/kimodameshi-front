@@ -16,16 +16,14 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error)
 })
 
-export default {
-    createMethod(data, endpoint, needSession, method) {
-        let params = new URLSearchParams()
-        if (needSession) params.append('session', localStorage.getItem('session'))
-        params.append('data', JSON.stringify(data))
-        return axios({
-            method: 'post',
-            url: url.BASE_URL + endpoint,
-            data: params,
-            headers: { 'Q-HTTP-Method': method }
-        })
-    }
-}
+export function createMethod(data, endpoint, needSession, method) {
+    let params = new URLSearchParams()
+    if (needSession) params.append('session', localStorage.getItem('session'))
+    params.append('data', JSON.stringify(data))
+    return axios({
+        method: 'post',
+        url: url.BASE_URL + endpoint,
+        data: params,
+        headers: { 'Q-HTTP-Method': method }
+    });
+};
