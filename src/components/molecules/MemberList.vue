@@ -1,7 +1,12 @@
 <template lang="pug">
   div(id="member_list")
     draggable
-      div(v-for="item in items" class="draggable-item" :key="item.id") {{ item.name }}
+      div(
+        v-for="item in items"
+        class="draggable-item"
+        :key="item.id"
+        :data-member-id="item.member_id"
+      ) {{ item.name }}
 </template>
 
 <script>
