@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    button submit
+    button(@click="$emit('submit')") submit
 </template>
 
 <script>
