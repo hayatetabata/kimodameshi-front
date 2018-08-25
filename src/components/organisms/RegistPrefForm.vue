@@ -8,6 +8,7 @@
 <script>
 import MemberList from '../molecules/MemberList'
 import RegistPrefButton from '../atoms/RegistPrefButton'
+import {createMethod} from '../../api/util'
 
 export default {
   methods: {
@@ -23,7 +24,8 @@ export default {
         'member_id': selfMemberId,
         'preferences': preferences
       };
-      console.log(params);
+      var result = createMethod(params, '/api/pref', false, 'POST');//TODO handle response
+      console.log('result!');
     }
   },
   components: {
