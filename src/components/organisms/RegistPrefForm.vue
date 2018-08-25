@@ -6,9 +6,10 @@
 </template>
 
 <script>
-import MemberList from '../molecules/MemberList'
-import RegistPrefButton from '../atoms/RegistPrefButton'
-import {createMethod} from '../../api/util'
+import MemberList from '@/components/molecules/MemberList'
+import RegistPrefButton from '@/components/atoms/RegistPrefButton'
+import {createRequest} from '@/api/util'
+import {ENDPOINTS} from '@/api/url'
 
 export default {
   props: [
@@ -27,10 +28,18 @@ export default {
         'member_id': selfMemberId,
         'preferences': preferences
       };
-      var result = createMethod(params, '/api/pref', false, 'POST');//TODO handle response
-      console.log('Post prefs!!');
 
-      this.$router.push({name: "Submitted"});//TODO redirect stand-by page
+      createRequest(params, ENDPOINTS.Preference, 'POST')
+        .then(function(response){
+          // handle success
+          console.log('Post prefs!!');
+          this.$router.push({name: "Submitted"}); //TODO redirect stand-by page
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+
     }
   },
   components: {
