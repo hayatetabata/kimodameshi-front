@@ -27,7 +27,7 @@ export default {
       var result = createMethod(params, '/api/pref', false, 'POST');//TODO handle response
       console.log('Post prefs!!');
 
-      this.$router.push({name: "Submitted"});
+      this.$router.push({name: "Submitted"});//TODO redirect stand-by page
     }
   },
   components: {
