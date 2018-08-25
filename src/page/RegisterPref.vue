@@ -1,8 +1,13 @@
 <template lang="pug">
   div
+    h1
+      | Prefer user id is none 
+    MemberList
 </template>
 
 <script>
+import MemberList from '../components/MemberList'
+
 export default {
   name: "RegisterPref",
   data(){
@@ -18,8 +23,10 @@ export default {
   },
   created(){
     // when created
-  }
-  
+  },
+  components: {
+    MemberList,
+  },
 }
 </script>
 

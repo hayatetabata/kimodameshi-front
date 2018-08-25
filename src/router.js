@@ -25,24 +25,20 @@ export default new Router({
       props: true
     },
     {
-      path: 'lounge/:lounge_id/members/:member_id/pref',
+      path: '/lounge/:lounge_id/members/:member_id/pref',
       name: 'RegisterPref',
-      component: () => import('./page/PreferMembers.vue')
+      component: () => import('./page/RegisterPref.vue'),
       props: true
     },
     {
-      path: 'lounge/:lounge_id/members/:member_id/result',
-      name: 'RegisterPref',
+      path: '/lounge/:lounge_id/members/:member_id/result',
+      name: 'Result',
       component: () => import('./page/Result.vue'),
       props: true
     },
     { 
       path: '*',
       component: () => import('./page/NotFoundComponent.vue'),
-    }
-      path: '/lounge/:lounge_id/members/:member_id/pref',
-      name: 'prefer_members',
     },
-    { path: '*', component: NotFoundComponent }
   ]
 })
