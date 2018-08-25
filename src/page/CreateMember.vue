@@ -1,7 +1,7 @@
 <template lang="pug">
   div(id="create-member")
     form(id='form' @submit.prevent="register($event)")
-      croppa(v-model="srcPath" canvas-color="transparent")
+      croppa(v-model="src" canvas-color="transparent")
       label 名前：
         input(type="text" placeholder="Hayate Tabata" name="name" id="name")
       button(type="submit") 登録
@@ -12,7 +12,7 @@ export default {
   name: "CreateMember",
   data(){
     return {
-      srcPath: null,
+      src: null,
     }
   },
   props: {
@@ -20,15 +20,27 @@ export default {
   },
   methods: {
     register (e) {
+<<<<<<< HEAD
       var form = document.forms.form;
       var img = this.srcPath;
+=======
+      var form = document.forms.form_field;
+      var img = this.src;
+      upload(img)
+>>>>>>> Create upload method
       var name = form.name.value;
-      console.log(name);
     },
   },
   created(){
     // when created
   },
+}
+
+function upload (img) {
+  this.src.generateBlog((blob) => {
+    //upload to server or s3
+  });
+  console.log(img)
 }
 </script>
 
