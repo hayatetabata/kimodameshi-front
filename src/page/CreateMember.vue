@@ -8,6 +8,7 @@
           style="height:100px;"
           :outputType="option.outputType"
           )
+      img(v-else :src="require('@/assets/user.jpg')" id="thumbnail")
       label 画像：
         input(type="file" v-on:change="preview($event)" accept="image")
       label 名前：
@@ -73,5 +74,8 @@ img {
 button {
   display: inline-block;
   width: 100%;
+}
+#thumbnail {
+  width: 150px;
 }
 </style>
