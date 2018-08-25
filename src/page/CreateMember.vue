@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "CreateLounge",
+  name: "CreateMember",
   data(){
     return {
       // data
