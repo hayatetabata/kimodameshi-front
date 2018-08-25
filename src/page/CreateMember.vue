@@ -12,7 +12,7 @@ export default {
   name: "CreateMember",
   data(){
     return {
-      srcPath: "http://localhost:8000/test.jpg",
+      srcPath: require('../assets/user.jpg')
     }
   },
   props: {
