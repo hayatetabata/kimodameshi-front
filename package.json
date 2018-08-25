@@ -1,14 +1,19 @@
 {
   "name": "kimodameshi-front",
   "version": "0.1.0",
+  "engines": {
+    "node": "9.6.1"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "npm run build && node server.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.3",
     "pug-plain-loader": "^1.0.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
