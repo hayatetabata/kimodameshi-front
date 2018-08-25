@@ -1,12 +1,12 @@
 <template lang="pug">
   div
     h1
-      | Prefer user id is none 
-    MemberList
+      | Please order based on your preference
+    RegistPrefForm
 </template>
 
 <script>
-import MemberList from '../components/MemberList'
+import RegistPrefForm from '../components/organisms/RegistPrefForm'
 
 export default {
   name: "RegisterPref",
@@ -25,8 +25,8 @@ export default {
     // when created
   },
   components: {
-    MemberList,
-  },
+    RegistPrefForm
+  }
 }
 </script>
 
