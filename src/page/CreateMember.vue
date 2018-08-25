@@ -3,11 +3,11 @@
     form(id='form' @submit.prevent="register($event)")
       VueCropper(
           ref="cropper"
+          v-if="srcPath"
           :img="srcPath"
           style="height:100px;"
           :outputType="option.outputType"
           )
-      img(:src="srcPath" id="thumbnail")
       label 画像：
         input(type="file" v-on:change="preview($event)" accept="image")
       label 名前：
@@ -22,7 +22,7 @@ export default {
   name: "CreateMember",
   data(){
     return {
-      srcPath: require('../assets/user.jpg'),
+      srcPath: null,
       option: {
         size: 1,
         outputType: 'jpg',
@@ -60,9 +60,6 @@ export default {
 <style lang="stylus">
 .form {
   width: 100%;
-}
-#thumbnail {
-  width: 50%;
 }
 label {
   display: inline-block;
