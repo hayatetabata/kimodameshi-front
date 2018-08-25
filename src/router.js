@@ -27,7 +27,7 @@ export default new Router({
     {
       path: 'lounge/:lounge_id/members/:member_id/pref',
       name: 'RegisterPref',
-      component: () => import('./page/RegisterPref.vue'),
+      component: () => import('./page/PreferMembers.vue')
       props: true
     },
     {
@@ -40,5 +40,9 @@ export default new Router({
       path: '*',
       component: () => import('./page/NotFoundComponent.vue'),
     }
+      path: '/lounge/:lounge_id/members/:member_id/pref',
+      name: 'prefer_members',
+    },
+    { path: '*', component: NotFoundComponent }
   ]
 })
