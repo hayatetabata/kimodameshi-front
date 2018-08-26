@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://52.196.176.142'
+export const BASE_URL = 'http://192.168.11.29:3000'
 export const ENDPOINTS = {
     Lounge: "/api/lounge/",
     Member: "/api/lounge/members",
