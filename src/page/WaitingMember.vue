@@ -8,19 +8,20 @@
 
 <script>
 import MemberList from '@/components/molecules/MemberList'
+import {createRequest} from '@/api/util'
+import {ENDPOINTS} from '@/api/url'
 
 export default {
   name: "WaitingMember",
   data(){
     return {
+      lounge_id: $router.lounge_id,
+      intervalId: null,
       members: [
           {'name': 'Tabata', 'member_id': 'fjfjfjfxf'},
           {'name': 'Matsumura', 'member_id': 'fjfjfjfjf'},
       ]
     }
-  },
-  props: {
-      // props
   },
   methods: {
     close () {
@@ -29,18 +30,30 @@ export default {
         params: {lounge_id: 12345, member_id: 12345}
       });
     },
-    fetch () {
-    }
   },
-  watch : {
+  mounted () {
+    var params = {
+      'lounge_id': this.lounge_id
+    };
+    this.intervalId = window.setInterval(function () {
+      createRequest(params, ENDPOINTS.Member, 'POST')
+        .then(function(response){
+            this.members = response.data.members;
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+      console.log('Polling');
+    }, 2000);
   },
-  created(){
-    // when created
+  beforeDestroy () {
+    console.log('clearInterval')
+    clearInterval(this.intervalId)
   },
   components: {
     MemberList
   }
-  
 }
 </script>
 
