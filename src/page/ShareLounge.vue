@@ -28,7 +28,7 @@ export default {
   ],
   methods: {
     copy () {
-      var link = document.getElementById('link').select();
+      document.getElementById('link').select();
       document.execCommand('copy');
       alert('Copy!')
     }

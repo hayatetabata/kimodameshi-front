@@ -30,13 +30,13 @@ export default {
     // props
   },
   methods: {
-    register (e) {
-      var form = document.forms.form;
+    register () {
+      // var form = document.forms.form;
       var img = this.src;
       if (!img) {
         upload(img)
       }
-      var name = form.name.value;
+      // var name = form.name.value;
       this.$router.push({name: 'WaitingMember', params: {lounge_id: 12345}});
     },
   },
@@ -46,9 +46,9 @@ export default {
 }
 
 function upload (img) {
-  this.src.generateBlog((blob) => {
-    //upload to server or s3
-  });
+  // this.src.generateBlog((blob) => {
+  //   upload to server or s3
+  // });
   console.log(img)
 }
 </script>

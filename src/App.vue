@@ -67,11 +67,12 @@ pc()
     margin 0 auto
 
 .button
-  display block
-  text-align center
-  padding 2rem
-  margin-top: 2rem;
-  cursor pointer
+  display: block;
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto 0;
+  cursor: pointer;
+  font-size 1.2rem
 
 input[type="text"]
   width: 100%;
