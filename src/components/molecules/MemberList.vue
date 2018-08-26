@@ -4,25 +4,25 @@
       div.list__element(
         v-for="member in members"
         class="draggable-member"
-        :key="member.id"
-        :data-member-id="member.member_id"
+        :key="member.member_uuid"
+        :data-member-id="member.member_uuid"
       )
         span.list__num {{ members.indexOf(member)+1 }}
         div.list__body
           img.list__icon(:src="member.thumbnail")
-          span.list__name {{ member.name }}
+          span.list__name {{ member.member_name }}
         span.list__action
           i.fas.fa-grip-vertical
     div(v-else class="member-list")
       div.list__element(
         v-for="member in members"
         class="draggable-member"
-        :key="member.id"
-        :data-member-id="member.member_id"
+        :key="member.member_uuid"
+        :data-member-id="member.member_uuid"
       )
         div.list__body
           img.list__icon(:src="member.thumbnail")
-          span.list__name {{ member.name }}
+          span.list__name {{ member.member_name }}
 </template>
 
 <script>

@@ -15,12 +15,8 @@ export default {
   name: "WaitingMember",
   data(){
     return {
-      lounge_id: this.$router.lounge_id,
       intervalId: null,
-      members: [
-          {'name': 'Tabata', 'member_id': 'fjfjfjfxf'},
-          {'name': 'Matsumura', 'member_id': 'fjfjfjfjf'},
-      ]
+      members: []
     }
   },
   props: [
@@ -34,20 +30,21 @@ export default {
       });
     },
   },
-  mounted () {
+  created () {
     var params = {
       'lounge_uuid': this.lounge_id
     };
+    self = this;
     this.intervalId = window.setInterval(function () {
       createRequest(params, ENDPOINTS.Member, 'GET')
-        .then(function(response){
-            this.members = response.data.members;
+        .then((response) => {
+            self.members = response.data['members'];
+            console.log(self.members);
         })
-        .catch(function (error) {
+        .catch((error) => {
           // handle error
           console.log(error);
         })
-      console.log('Polling');
     }, 2000);
   },
   beforeDestroy () {
