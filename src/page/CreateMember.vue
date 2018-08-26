@@ -7,7 +7,7 @@
         div.croppaWrapper
           croppa(v-model="src" canvas-color="transparent")
         div.field__group
-          input#name(type="text" name="name" placeholder="自分の名前を入力")
+          input.input__text#name(type="text" name="name" placeholder="自分の名前を入力")
           p.field__title 所属グループを選択する
           div.field
             input#first(type="radio" name="first")

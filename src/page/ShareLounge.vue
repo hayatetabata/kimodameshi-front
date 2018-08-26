@@ -5,7 +5,8 @@
       h1.title.isMain 結界を共有しよう
 
       div.field
-        input(id="link" type="text" :value="link" readonly="readonly")
+        div.url__container.input__text
+          input.url_element(id="link" type="text" :value="link" readonly="readonly")
         div.field__action(@click="copy()") 
           i.fas.fa-clone
 

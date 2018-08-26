@@ -4,17 +4,18 @@
       h2.title.isSub STEP1
       h1.title.isMain 結界を作成しよう
       form(id="form")
-        input(type="text" name="name" placeholder="結界の名前を入力")
 
+        input.input__text(type="text" name="name" placeholder="結界の名前を入力")
+        
         div.field__group
           p.field__title グループのラベルをカスタマイズ
-          input(type="text" name="first" placeholder="例：男性")
-          input(type="text" name="second" placeholder="例：女性")
-
+          input.input__text(type="text" name="first" placeholder="例：男性")
+          input.input__text(type="text" name="second" placeholder="例：女性")
+        
         div.field__group
           p.field__title オーナーもメンバーとして参加する
 
-          input(type="text" name="owner_name" placeholder="自分の名前")
+          input.input__text(type="text" name="owner_name" placeholder="自分の名前")
 
           p.field__title 所属グループを選択する
           div.field

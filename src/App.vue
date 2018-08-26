@@ -74,15 +74,16 @@ pc()
   cursor: pointer;
   font-size 1.2rem
 
-input[type="text"]
-  width: 100%;
-  color white
-  line-height: 3rem;
-  font-size: 1rem;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid white;
-  margin-bottom: 1rem;
+.input
+  &__text
+    width 100%
+    color white
+    line-height 3rem
+    font-size 1rem
+    background transparent
+    border none
+    border-bottom 1px solid white
+    margin-bottom 1rem
 
 .field
   position relative

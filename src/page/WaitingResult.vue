@@ -1,9 +1,8 @@
 <template lang="pug">
-  div
-    h1 submitted!!
-    router-link(
-        :to="{name: 'Result', params: {lounge_id: 12345, member_id: 12345}}"
-    ) Show Result
+  div.wrapper
+    div.centered
+        p あと<span class="isBig">8</span>人の
+        p 登録を待っています。
 </template>
 
 <script>
@@ -22,3 +21,12 @@ export default {
   },
 }
 </script>
+
+<style lang="stylus" scoped>
+p
+    line-height 1rem
+    text-align center
+    margin 1rem 0
+span
+    font-size 8rem
+</style>
