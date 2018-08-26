@@ -1,6 +1,13 @@
 <template lang="pug">
   div(id="member_list")
-    draggable
+    draggable(v-if="{is_draggable}")
+      div(
+        v-for="item in items"
+        class="draggable-item"
+        :key="item.id"
+        :data-member-id="item.member_id"
+      ) {{ item.name }}
+    div(v-else class="member-list")
       div(
         v-for="item in items"
         class="draggable-item"
@@ -22,6 +29,9 @@ export default {
         {'name': 'Tabata', 'member_id': 'RerLz8mYXFfZRAWH', 'thumbnail': 'test.jpg'},
       ]
     }
+  },
+  props: {
+    is_draggable: false
   },
   components: {
     draggable
