@@ -19,6 +19,12 @@ export default new Router({
       props: true
     },
     {
+      path: '/lounge/:lounge_id',
+      name: 'ShareLounge',
+      component: () => import('./page/ShareLounge.vue'),
+      props: true
+    },
+    {
       path: '/lounge/:lounge_id/members/create/',
       name: 'CreateMember',
       component: () => import('./page/CreateMember.vue'),
