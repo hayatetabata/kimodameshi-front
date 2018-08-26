@@ -3,13 +3,13 @@
     div.container#share-lounge
       h2.title.isSub STEP2
       h1.title.isMain 結界を共有しよう
-      
+
       div.field
         div.url__container.input__text
           input.url_element(id="link" type="text" :value="link" readonly="readonly")
         div.field__action(@click="copy()") 
           i.fas.fa-clone
-      
+
       p.isCentered or
 
       p.isCentered(id="share-button")
@@ -21,7 +21,7 @@ export default {
   name: "ShowLounge",
   data(){
     return {
-      link: 'http://localhost:8080/lounge/12345/members/create',//TODO Correct base url
+      link: 'http://192.168.11.28:8080/lounge/'+ this.lounge_id +'/members/create',
     }
   },
   props: [

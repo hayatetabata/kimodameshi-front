@@ -5,6 +5,23 @@
         p 登録を待っています。
 </template>
 
+<script>
+export default {
+  name: "WaitingResult",
+  data(){
+    return {
+      intervalId: null,
+    }
+  },
+  props: [
+    'lounge_id', 'member_id'
+  ],
+  created () {
+
+  },
+}
+</script>
+
 <style lang="stylus" scoped>
 p
     line-height 1rem

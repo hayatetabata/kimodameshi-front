@@ -2,49 +2,45 @@
   div(id="member_list")
     draggable(v-if="isDraggable")
       div.list__element(
-        v-for="item in items"
-        class="draggable-item"
-        :key="item.id"
-        :data-member-id="item.member_id"
+        v-for="member in members"
+        class="draggable-member"
+        :key="member.member_uuid"
+        :data-member-id="member.member_uuid"
       )
-        span.list__num {{ items.indexOf(item)+1 }}
+        span.list__num {{ members.indexOf(member)+1 }}
         div.list__body
-          img.list__icon(:src="item.thumbnail")
-          span.list__name {{ item.name }}
+          img.list__icon(:src="member.thumbnail_url")
+          span.list__name {{ member.member_name }}
         span.list__action
           i.fas.fa-grip-vertical
     div(v-else class="member-list")
       div.list__element(
-        v-for="item in items"
-        class="draggable-item"
-        :key="item.id"
-        :data-member-id="item.member_id"
+        v-for="member in members"
+        class="draggable-member"
+        :key="member.member_uuid"
+        :data-member-id="member.member_uuid"
       )
         div.list__body
-          img.list__icon(:src="item.thumbnail")
-          span.list__name {{ item.name }}
+          img.list__icon(:src="member.thumbnail_url")
+          span.list__name {{ member.member_name }}
 </template>
 
 <script>
 import draggable from 'vuedraggable'
-let def = "/Default_Profile_Image.png"
-
 export default {
   data: function () {
     return {
-      'items': [
-        {'name': 'Matsumura', 'member_id': '0OFIGb4Ffl4TS0IS', 'thumbnail': def},
-        {'name': 'Nonaka', 'member_id': 'usOWvEffXGmpun+K', 'thumbnail': def},
-        {'name': 'Ando', 'member_id': '7naN2b3Cplh2CTnt', 'thumbnail': def},
-        {'name': 'Tabata', 'member_id': 'RerLz8mYXFfZRAWH', 'thumbnail': def},
-      ]
     }
   },
   props: {
     isDraggable: {
       type: Boolean,
       default: false
-    }
+    },
+    members: {
+      type: Array,
+      default: () => []
+    },
   },
   components: {
     draggable

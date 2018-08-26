@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     div(id="self-member-id" :data-self-member-id="member_id")
-    MemberList(:is-draggable="isDraggable")
+    MemberList(:is-draggable="isDraggable" :members="members")
     RegistPrefButton(@submit="registPref")
 </template>
 
@@ -14,11 +14,11 @@ import {ENDPOINTS} from '@/api/url'
 export default {
   data: function () {
     return {
-      isDraggable: true
+      isDraggable: true,
     }
   },
   props: [
-      'member_id'
+      'member_id', "members"
   ],
   methods: {
     registPref() {
@@ -30,7 +30,7 @@ export default {
         .getAttribute('data-self-member-id');
 
       var params = {
-        'member_id': selfMemberId,
+        'member_uuid': selfMemberId,
         'preferences': preferences
       };
 
@@ -45,7 +45,6 @@ export default {
           // handle error
           console.log(error);
         })
-
     }
   },
   components: {
