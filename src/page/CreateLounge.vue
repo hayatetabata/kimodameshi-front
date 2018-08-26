@@ -17,7 +17,7 @@
       input(type="checkbox" name="allow_alone")
       label 一人を許容する
 
-    router-link(:to="{name: 'CreateMember', params: {lounge_id: 12345}}") Create Member!
+    button(@click="submit()") 結界を作成する
 </template>
 
 <script>
@@ -32,7 +32,14 @@ export default {
     // props
   },
   methods: {
-    // functions
+    submit () {
+      this.$router.push({
+        'name': 'CreateMember',
+        'params': {
+            'lounge_id': 12345
+        }
+      });
+    }
   },
   created(){
     // when created
