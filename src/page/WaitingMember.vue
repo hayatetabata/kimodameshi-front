@@ -15,7 +15,7 @@ export default {
   name: "WaitingMember",
   data(){
     return {
-      lounge_id: $router.lounge_id,
+      lounge_id: this.$router.lounge_id,
       intervalId: null,
       members: [
           {'name': 'Tabata', 'member_id': 'fjfjfjfxf'},
@@ -23,6 +23,9 @@ export default {
       ]
     }
   },
+  props: [
+    'lounge_id'
+  ],
   methods: {
     close () {
       this.$router.push({
@@ -33,10 +36,10 @@ export default {
   },
   mounted () {
     var params = {
-      'lounge_id': this.lounge_id
+      'lounge_uuid': this.lounge_id
     };
     this.intervalId = window.setInterval(function () {
-      createRequest(params, ENDPOINTS.Member, 'POST')
+      createRequest(params, ENDPOINTS.Member, 'GET')
         .then(function(response){
             this.members = response.data.members;
         })
