@@ -1,8 +1,8 @@
 <template lang="pug">
-  div
-    h1
-      | Please order based on your preference
-    RegistPrefForm(:member_id="member_id")
+  div.wrapper
+    div.container#register-pref
+      h1.title.isMain 希望順位を登録
+      RegistPrefForm(:member_id="member_id")
 </template>
 
 <script>

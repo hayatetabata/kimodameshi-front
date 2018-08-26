@@ -24,6 +24,8 @@
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-eslint": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
+    "eslint": "^5.4.0",
+    "eslint-plugin-vue": "^5.0.0-beta.3",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "stylus": "^0.54.5",
@@ -39,7 +41,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

@@ -1,8 +1,9 @@
 <template lang="pug">
-  div(id="waiting-member")
-    h1 ユーザー登録待ち
-    MemberList
-    button(@click="close()") 受付を終了する
+  div.wrapper
+    div.container#waiting-member
+      h1.title.isMain Now Waiting...
+      MemberList
+      a.button(@click="close()") 受付を終了する
 </template>
 
 <script>
