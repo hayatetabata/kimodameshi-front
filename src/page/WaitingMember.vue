@@ -13,11 +13,14 @@ export default {
   name: "WaitingMember",
   data(){
     return {
-      // data
+      members: [
+          {'name': 'Tabata', 'member_id': 'fjfjfjfxf'},
+          {'name': 'Matsumura', 'member_id': 'fjfjfjfjf'},
+      ]
     }
   },
   props: {
-    // props
+      // props
   },
   methods: {
     close () {
@@ -25,7 +28,11 @@ export default {
         name: 'RegisterPref',
         params: {lounge_id: 12345, member_id: 12345}
       });
+    },
+    fetch () {
     }
+  },
+  watch : {
   },
   created(){
     // when created
