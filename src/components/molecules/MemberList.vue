@@ -1,13 +1,13 @@
 <template lang="pug">
   div(id="member_list")
-    draggable(v-if="isDraggable")
+    draggable(v-if="isDraggable" @end="list()")
       div.list__element(
-        v-for="member in members"
+        v-for="(member, index) in members"
         class="draggable-member"
         :key="member.member_uuid"
         :data-member-id="member.member_uuid"
       )
-        span.list__num {{ members.indexOf(member)+1 }}
+        span.list__num {{ index + 1 }}
         div.list__body
           img.list__icon(:src="member.thumbnail_url")
           span.list__name {{ member.member_name }}
@@ -30,6 +30,7 @@ import draggable from 'vuedraggable'
 export default {
   data: function () {
     return {
+
     }
   },
   props: {
@@ -41,6 +42,14 @@ export default {
       type: Array,
       default: () => []
     },
+  },
+  methods: {
+    list () {
+        var list = document.getElementsByClassName('list__num');
+        Array.prototype.forEach.call(list, function (row, index) {
+            row.innerHTML = index + 1;
+        });
+    }
   },
   components: {
     draggable
