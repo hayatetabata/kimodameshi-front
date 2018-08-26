@@ -20,14 +20,9 @@ export default {
   },
   methods: {
     register (e) {
-<<<<<<< HEAD
       var form = document.forms.form;
-      var img = this.srcPath;
-=======
-      var form = document.forms.form_field;
       var img = this.src;
       upload(img)
->>>>>>> Create upload method
       var name = form.name.value;
     },
   },
