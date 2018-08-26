@@ -36,10 +36,11 @@ export default {
     isDraggable: {
       type: Boolean,
       default: false
+    },
     members: {
       type: Array,
       default: () => []
-    }
+    },
   },
   components: {
     draggable
