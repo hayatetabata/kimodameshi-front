@@ -26,7 +26,7 @@ export default {
     close () {
       this.$router.push({
         name: 'RegisterPref',
-        params: {lounge_id: 12345, member_id: 12345}
+        params: {lounge_id: this.lounge_id, member_id: 12345}
       });
     },
   },

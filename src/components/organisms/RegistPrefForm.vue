@@ -15,14 +15,10 @@ export default {
   data: function () {
     return {
       isDraggable: true,
-      members: [
-          {'name': 'Tabata', 'member_id': 'fjfjfj111'},
-          {'name': 'Matsumura', 'member_id': 'fjfjfjfjf'},
-      ],
     }
   },
   props: [
-      'member_id'
+      'member_id', "members"
   ],
   methods: {
     registPref() {
