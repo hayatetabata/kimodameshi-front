@@ -19,6 +19,9 @@
 </template>
 
 <script>
+import {createRequest} from '@/api/util'
+import {ENDPOINTS} from '@/api/url'
+
 export default {
   name: "CreateMember",
   data(){
@@ -30,26 +33,40 @@ export default {
     // props
   },
   methods: {
-    register () {
-      // var form = document.forms.form;
-      var img = this.src;
-      if (!img) {
-        upload(img)
+    register (e) {
+      var form = document.forms.form;
+      var src = this.src;
+      var img = null;
+      var formData = new FormData();
+      if (src) {
+          src.generateBlob((blob) => {
+            formData.append('thumbnail', blob, 'thumbnail.jpg');
+          });
       }
-      // var name = form.name.value;
-      this.$router.push({name: 'WaitingMember', params: {lounge_id: 12345}});
+      formData.append('name', form.name.value);
+
+      var vue = this;
+      createRequest(formData, ENDPOINTS.Member, 'POST')
+        .then(function(response){
+          // handle success
+          console.log('Post member data');
+          vue.$router.push({
+            'name': 'WaitingMember',
+            'params': {
+                'lounge_id': response.data.lounge_uuid,
+                'member_id': response.data.member_uuid,
+            }
+          });
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
     },
   },
   created(){
     // when created
   },
-}
-
-function upload (img) {
-  // this.src.generateBlog((blob) => {
-  //   upload to server or s3
-  // });
-  console.log(img)
 }
 </script>
 

@@ -2,21 +2,36 @@
   div.wrapper
     div.container#register-pref
       h1.title.isMain 希望順位を登録
-      RegistPrefForm(:member_id="member_id")
+      RegistPrefForm(:members="members")
 </template>
 
 <script>
 import RegistPrefForm from '../components/organisms/RegistPrefForm'
+import {createRequest} from '@/api/util'
+import {ENDPOINTS} from '@/api/url'
 
 export default {
   name: "RegisterPref",
-  data(){
+  data () {
+    var params = {
+      'lounge_uuid': this.lounge_id
+    };
+    self = this
+    self.members = [];
+    createRequest(params, ENDPOINTS.Member, 'GET')
+        .then((response) => {
+            self.members = response.data['members'];
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        });
     return {
-      // data
-    }
+      members: self.members,
+    };
   },
   props: [
-    'member_id'
+    'lounge_id', 'member_id'
   ],
   methods: {
     // functions

@@ -5,12 +5,12 @@
       h1.title.isMain 結界を作成しよう
       form(id="form")
         input(type="text" name="name" placeholder="結界の名前を入力")
-        
+
         div.field__group
           p.field__title グループのラベルをカスタマイズ
           input(type="text" name="first" placeholder="例：男性")
           input(type="text" name="second" placeholder="例：女性")
-        
+
         div.field__group
           p.field__title オーナーもメンバーとして参加する
 
@@ -33,6 +33,9 @@
 </template>
 
 <script>
+import {createRequest} from '@/api/util'
+import {ENDPOINTS} from '@/api/url'
+
 export default {
   name: "CreateLounge",
   data(){
@@ -45,12 +48,33 @@ export default {
   },
   methods: {
     submit () {
-      this.$router.push({
-        'name': 'ShareLounge',
-        'params': {
-            'lounge_id': 12345
-        }
-      });
+      var form = document.forms.form;
+      var params = {
+          "lounge_name": form.name.value,
+          "groups": {
+              "first": form.first.value,
+              "second": form.second.value,
+          },
+          "allow_alone": form.allow_alone.value,
+          "owner": {
+            "name": form.owner_name.value,
+          }
+      };
+
+      var vue = this;
+      createRequest(params, ENDPOINTS.Lounge, 'POST')
+        .then(function(response){
+          vue.$router.push({
+            'name': 'ShareLounge',
+            'params': {
+                'lounge_id': response.data.lounge_uuid
+            }
+          });
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
     }
   },
   created(){

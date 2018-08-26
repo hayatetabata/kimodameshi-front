@@ -8,32 +8,52 @@
 
 <script>
 import MemberList from '@/components/molecules/MemberList'
+import {createRequest} from '@/api/util'
+import {ENDPOINTS} from '@/api/url'
 
 export default {
   name: "WaitingMember",
   data(){
     return {
-      // data
+      intervalId: null,
+      members: []
     }
   },
-  props: {
-    // props
-  },
+  props: [
+    'lounge_id', 'member_id'
+  ],
   methods: {
     close () {
       this.$router.push({
         name: 'RegisterPref',
-        params: {lounge_id: 12345, member_id: 12345}
+        params: {lounge_id: this.lounge_id, member_id: this.member_id}
       });
-    }
+    },
   },
-  created(){
-    // when created
+  created () {
+    var params = {
+      'lounge_uuid': this.lounge_id
+    };
+    self = this;
+    this.intervalId = window.setInterval(function () {
+      createRequest(params, ENDPOINTS.Member, 'GET')
+        .then((response) => {
+            self.members = response.data['members'];
+            console.log(self.members);
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        })
+    }, 2000);
+  },
+  beforeDestroy () {
+    console.log('clearInterval')
+    clearInterval(this.intervalId)
   },
   components: {
     MemberList
   }
-  
 }
 </script>
 
