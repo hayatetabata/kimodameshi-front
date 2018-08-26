@@ -1,12 +1,15 @@
 <template lang="pug">
   div(id="waiting-member")
-    h1 wait member
-    router-link(:to="{name: 'RegisterPref', params: {lounge_id: 12345, member_id: 12345}}") Regist prefs
+    h1 ユーザー登録待ち
+    MemberList
+    button(@click="close()") 受付を終了する
 </template>
 
 <script>
+import MemberList from '@/components/molecules/MemberList'
+
 export default {
-  name: "CreateLounge",
+  name: "WaitingMember",
   data(){
     return {
       // data
@@ -16,10 +19,18 @@ export default {
     // props
   },
   methods: {
-    // functions
+    close () {
+      this.$router.push({
+        name: 'RegisterPref',
+        params: {lounge_id: 12345, member_id: 12345}
+      });
+    }
   },
   created(){
     // when created
+  },
+  components: {
+    MemberList
   }
   
 }
