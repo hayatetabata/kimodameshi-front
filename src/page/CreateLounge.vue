@@ -19,10 +19,10 @@
 
           p.field__title 所属グループを選択する
           div.field
-            input#first(type="radio" name="first")
+            input#first(type="radio" name="group" value="first")
             label(for="first") 男性
           div.field
-            input#second(type="radio" name="second")
+            input#second(type="radio" name="group" value="second")
             label(for="second") 女性
 
         div.field__group
@@ -44,11 +44,9 @@ export default {
       // data
     }
   },
-  props: {
-    // props
-  },
   methods: {
-    submit () {
+    async submit () {
+
       var form = document.forms.form;
       var params = {
           "lounge_name": form.name.value,
@@ -59,29 +57,23 @@ export default {
           "allow_alone": form.allow_alone.value,
           "owner": {
             "name": form.owner_name.value,
+            "group": form.group.value
           }
       };
 
-      var vue = this;
-      createRequest(params, ENDPOINTS.Lounge, 'POST')
-        .then(function(response){
-          vue.$router.push({
+      try {   
+        let response = await createRequest(params, ENDPOINTS.Lounge, 'POST')
+          this.$router.push({
             'name': 'ShareLounge',
             'params': {
                 'lounge_id': response.data.lounge_uuid
             }
           });
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
+      } catch (error) {
+        console.log(error);
+      }
     }
-  },
-  created(){
-    // when created
   }
-  
 }
 </script>
 
