@@ -34,7 +34,7 @@ export default {
   methods: {
     submit () {
       this.$router.push({
-        'name': 'CreateMember',
+        'name': 'ShareLounge',
         'params': {
             'lounge_id': 12345
         }
