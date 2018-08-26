@@ -25,15 +25,21 @@ export default new Router({
       props: true
     },
     {
+      path: '/lounge/:lounge_id/members/waiting',
+      name: 'WaitingMember',
+      component: () => import('./page/WaitingMember.vue'),
+      props: true
+    },
+    {
       path: '/lounge/:lounge_id/members/:member_id/pref',
       name: 'RegisterPref',
       component: () => import('./page/RegisterPref.vue'),
       props: true
     },
     {
-      path: '/submitted',
-      name: 'Submitted',
-      component: () => import('./page/Submitted.vue'),
+      path: '/lounge/:lounge_id/members/:member_id/result/waiting',
+      name: 'WaitingResult',
+      component: () => import('./page/WaitingResult.vue'),
       props: true
     },
     {
