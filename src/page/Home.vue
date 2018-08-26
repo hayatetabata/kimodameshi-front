@@ -1,15 +1,27 @@
 <template lang="pug">
-  div(class="home")
-    h1 肝試しマッチング
-    router-link(:to="{name: 'CreateLounge'}") Create Lounge
+  div.wrapper
+    div.centered.home
+      h1.isVertical.title きもだめしペアマッチング
+      router-link.button(:to="{name: 'CreateLounge'}") はじめる
 </template>
-
 <script>
 export default {
-  name: 'home',
+  name: 'home'
 }
 </script>
-
 <style lang="stylus">
+
+.isVertical
+  writing-mode vertical-rl
+  margin: 0 auto;
+  letter-spacing 1rem
+  font-size 1rem
+
+.centered
+  display flex
+  justify-content center
+  align-content center
+  flex-direction column
+  height 100%
 
 </style>

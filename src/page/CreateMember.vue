@@ -1,10 +1,21 @@
 <template lang="pug">
-  div(id="create-member")
-    form(id='form' @submit.prevent="register($event)")
-      croppa(v-model="src" canvas-color="transparent")
-      label 名前：
-        input(type="text" placeholder="Hayate Tabata" name="name" id="name")
-      button(type="submit") 登録
+  div.wrapper
+    div.container#create-member
+      h2.title.isSub WELCOME TO
+      h1.title.isMain WESS大夏2018
+      form(id='form' @submit.prevent="register($event)")
+        div.croppaWrapper
+          croppa(v-model="src" canvas-color="transparent")
+        div.field__group
+          input#name(type="text" name="name" placeholder="自分の名前を入力")
+          p.field__title 所属グループを選択する
+          div.field
+            input#first(type="radio" name="first")
+            label(for="first") 男性
+          div.field
+            input#second(type="radio" name="second")
+            label(for="second") 女性
+        a.button(type="submit" @click="register") 登録
 </template>
 
 <script>
@@ -43,23 +54,10 @@ function upload (img) {
 </script>
 
 <style lang="stylus">
-.form {
-  width: 100%;
-}
-label {
-  display: inline-block;
-}
-input {
-  display: inline-block;
-}
-img {
-  display: inline-block;
-}
-button {
-  display: inline-block;
-  width: 100%;
-}
-#thumbnail {
-  width: 150px;
-}
+
+.croppaWrapper
+    display: flex
+    justify-content: center
+.croppa-container
+    border-radius: 100%
 </style>
