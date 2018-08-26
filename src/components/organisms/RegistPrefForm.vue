@@ -29,11 +29,12 @@ export default {
         'preferences': preferences
       };
 
+      this.$router.push({name: "WaitingResult"});//TODO Delete here after implemention
       createRequest(params, ENDPOINTS.Preference, 'POST')
         .then(function(response){
           // handle success
           console.log('Post prefs!!');
-          this.$router.push({name: "Submitted"}); //TODO redirect stand-by page
+          this.$router.push({name: "WaitingResult"});
         })
         .catch(function (error) {
           // handle error

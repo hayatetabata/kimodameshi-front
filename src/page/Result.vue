@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    h1 Show result
 </template>
 
 <script>

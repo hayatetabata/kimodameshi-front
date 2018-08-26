@@ -1,7 +1,7 @@
 <template lang="pug">
-  div(id="create-lounge")
-    h1 create lounge
-    router-link(:to="{name: 'CreateMember', params: {lounge_id: 12345}}") Create Member!
+  div(id="waiting-member")
+    h1 wait member
+    router-link(:to="{name: 'RegisterPref', params: {lounge_id: 12345, member_id: 12345}}") Regist prefs
 </template>
 
 <script>
