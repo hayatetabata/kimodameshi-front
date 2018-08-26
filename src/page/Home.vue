@@ -1,18 +1,12 @@
 <template lang="pug">
   div(class="home")
-    img(alt="Vue logo" src="../assets/logo.png")
-    HelloWorld(msg="Welcome to Your Vue.js App")
+    h1 肝試しマッチング
+    router-link(:to="{name: 'CreateLounge'}") Create Lounge
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
