@@ -34,7 +34,7 @@ export default {
     var params = {
       'lounge_uuid': this.lounge_id
     };
-    self = this;
+    let self = this;
     this.intervalId = window.setInterval(function () {
       createRequest(params, ENDPOINTS.Member, 'GET')
         .then((response) => {

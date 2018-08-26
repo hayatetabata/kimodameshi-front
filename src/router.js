@@ -6,7 +6,6 @@ import ShareLounge from './page/ShareLounge.vue'
 import CreateMember from './page/CreateMember.vue'
 import WaitingMember from './page/WaitingMember.vue'
 import RegisterPref from './page/RegisterPref.vue'
-import WaitingResult from './page/WaitingResult.vue'
 import Result from './page/Result.vue'
 
 
@@ -49,12 +48,6 @@ export default new Router({
       path: '/lounge/:lounge_id/members/:member_id/pref',
       name: 'RegisterPref',
       component: RegisterPref,
-      props: true
-    },
-    {
-      path: '/lounge/:lounge_id/members/:member_id/result/waiting',
-      name: 'WaitingResult',
-      component: WaitingResult,
       props: true
     },
     {

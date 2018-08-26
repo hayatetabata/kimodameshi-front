@@ -1,15 +1,21 @@
 <template lang="pug">
-  div
-    h1 Show result
-    PartnerProfile(
-    v-for="partner in partners"
-    :name="partner.member_name"
-    :src-path="partner.thumbnail_url"
-    )
+  div.wrapper
+    div.centered.isSpecial(v-if="partners.length")
+      div.slider__wrapper
+        h1.title.special It's a Match
+        div.slider__viewer
+          div.slider__container
+            div.slider__item(v-if="partners.length" v-for="partner in partners")
+              div.thumbnail
+                img(:src="partner.thumbnail_url")
+              p.isName {{ partner.member_name }}
+            div(v-else)
+              img(src="http://localhost/failed.jpg")
+    WaitingResult(v-else :waiting_for="waiting_for")
 </template>
 
 <script>
-import PartnerProfile from '@/components/molecules/PartnerProfile'
+import WaitingResult from '@/page/WaitingResult.vue'
 import {createRequest} from '@/api/util'
 import {ENDPOINTS} from '@/api/url'
 
@@ -19,7 +25,8 @@ export default {
   data () {
     return {
       intervalId: null,
-      partners: []
+      partners: [],
+      waiting_for: 0
     }
   },
   props: [
@@ -57,12 +64,40 @@ export default {
     clearInterval(this.intervalId)
   },
   components: {
-    PartnerProfile
+    WaitingResult
   }
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
+.thumbnail
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background gray;
+  box-shadow: 0 20px 150px -10px #4A90E2;
 
+.slider
+  &__wrapper
+    position relative
+  &__viewer
+    position relative
+    overflow-x scroll 
+    width 100vw
+  &__container
+    display flex
+    width 200vw
+    padding: 6rem 0;
+  &__item
+    width 100vw
+
+.isName
+  font-size 1.5rem
+  text-align center
 </style>

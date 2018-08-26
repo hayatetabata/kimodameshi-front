@@ -16,7 +16,7 @@ export default {
     var params = {
       'lounge_uuid': this.lounge_id
     };
-    self = this
+    let self = this
     self.members = [];
     createRequest(params, ENDPOINTS.Member, 'GET')
         .then((response) => {
