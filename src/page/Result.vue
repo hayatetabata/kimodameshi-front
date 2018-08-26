@@ -16,8 +16,8 @@ export default {
   data () {
     return {
       partners: [
-        {name: 'Matsumura', thumbnail_url: 'http://localhost/user.jpg'},
-        {name: 'Matsumura', thumbnail_url: 'http://localhost/user.jpg'},
+        {name: 'Matsumura Toshiaki', thumbnail_url: 'http://localhost:8080/Default_Profile_Image.png'},
+        {name: 'Matsumura Toshiaki', thumbnail_url: 'http://localhost:8080/Default_Profile_Image.png'},
       ]
     }
   },
