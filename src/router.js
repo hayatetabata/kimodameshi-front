@@ -40,7 +40,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/lounge/:lounge_id/members/waiting',
+      path: '/lounge/:lounge_id/members/:member_id/waiting',
       name: 'WaitingMember',
       component: WaitingMember,
       props: true

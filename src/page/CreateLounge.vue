@@ -5,12 +5,12 @@
       h1.title.isMain 結界を作成しよう
       form(id="form")
         input(type="text" name="name" placeholder="結界の名前を入力")
-        
+
         div.field__group
           p.field__title グループのラベルをカスタマイズ
           input(type="text" name="first" placeholder="例：男性")
           input(type="text" name="second" placeholder="例：女性")
-        
+
         div.field__group
           p.field__title オーナーもメンバーとして参加する
 
@@ -61,12 +61,13 @@ export default {
           }
       };
 
+      var vue = this;
       createRequest(params, ENDPOINTS.Lounge, 'POST')
         .then(function(response){
-          this.$router.push({
+          vue.$router.push({
             'name': 'ShareLounge',
             'params': {
-                'lounge_id': response.data.lounge_id
+                'lounge_id': response.data.lounge_uuid
             }
           });
         })

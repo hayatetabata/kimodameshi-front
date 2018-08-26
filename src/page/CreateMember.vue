@@ -45,14 +45,16 @@ export default {
       }
       formData.append('name', form.name.value);
 
+      var vue = this;
       createRequest(formData, ENDPOINTS.Member, 'POST')
         .then(function(response){
           // handle success
           console.log('Post member data');
-          this.$router.push({
+          vue.$router.push({
             'name': 'WaitingMember',
             'params': {
-                'lounge_id': response.data.lounge_id
+                'lounge_id': response.data.lounge_uuid,
+                'member_id': response.data.member_uuid,
             }
           });
         })

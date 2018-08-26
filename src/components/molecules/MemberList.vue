@@ -9,7 +9,7 @@
       )
         span.list__num {{ members.indexOf(member)+1 }}
         div.list__body
-          img.list__icon(:src="member.thumbnail")
+          img.list__icon(:src="member.thumbnail_url")
           span.list__name {{ member.member_name }}
         span.list__action
           i.fas.fa-grip-vertical
@@ -21,7 +21,7 @@
         :data-member-id="member.member_uuid"
       )
         div.list__body
-          img.list__icon(:src="member.thumbnail")
+          img.list__icon(:src="member.thumbnail_url")
           span.list__name {{ member.member_name }}
 </template>
 

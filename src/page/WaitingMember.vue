@@ -20,13 +20,13 @@ export default {
     }
   },
   props: [
-    'lounge_id'
+    'lounge_id', 'member_id'
   ],
   methods: {
     close () {
       this.$router.push({
         name: 'RegisterPref',
-        params: {lounge_id: this.lounge_id, member_id: 12345}
+        params: {lounge_id: this.lounge_id, member_id: this.member_id}
       });
     },
   },
