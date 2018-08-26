@@ -30,7 +30,7 @@ export default {
         .getAttribute('data-self-member-id');
 
       var params = {
-        'member_id': selfMemberId,
+        'member_uuid': selfMemberId,
         'preferences': preferences
       };
 
