@@ -3,6 +3,8 @@
     div(id="self-member-id" :data-self-member-id="member_id")
     MemberList(:is-draggable="isDraggable" :members="members")
     RegistPrefButton(@submit="registPref")
+    input(type="hidden" id="member_id" :value="member_id")
+    input(type="hidden" id="lounge_id" :value="lounge_id")
 </template>
 
 <script>
@@ -18,7 +20,7 @@ export default {
     }
   },
   props: [
-      'member_id', "members"
+      'lounge_id', 'member_id', "members"
   ],
   methods: {
     registPref() {
@@ -34,12 +36,14 @@ export default {
         'preferences': preferences
       };
 
-      this.$router.push({name: "WaitingResult"});//TODO Delete here after implemention
+      var vue = this;
       createRequest(params, ENDPOINTS.Preference, 'POST')
         .then(function(response){
           // handle success
-          console.log('Post prefs!!');
-          this.$router.push({name: "WaitingResult"});
+            vue.$router.push({name: "WaitingResult", params: {
+                'lounge_id': document.getElementById('lounge_id').getAttribute('value'),
+                'member_id': document.getElementById('member_id').getAttribute('value'),
+            }});
         })
         .catch(function (error) {
           // handle error

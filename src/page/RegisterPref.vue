@@ -2,7 +2,7 @@
   div.wrapper
     div.container#register-pref
       h1.title.isMain 希望順位を登録
-      RegistPrefForm(:members="members")
+      RegistPrefForm(:members="members" :lounge_id="lounge_id" :member_id="member_id")
 </template>
 
 <script>
