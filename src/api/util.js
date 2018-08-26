@@ -6,6 +6,9 @@ export function createRequest(data, endpoint, method) {
     let config = {
         method: method,
         url: url.BASE_URL + endpoint,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
     }
     let key = (method == "GET") ? "params" : "data" ;
     config[key] = params
