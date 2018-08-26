@@ -33,6 +33,9 @@
 </template>
 
 <script>
+import {createRequest} from '@/api/util'
+import {ENDPOINTS} from '@/api/url'
+
 export default {
   name: "CreateLounge",
   data(){
@@ -45,12 +48,32 @@ export default {
   },
   methods: {
     submit () {
-      this.$router.push({
-        'name': 'ShareLounge',
-        'params': {
-            'lounge_id': 12345
-        }
-      });
+      var form = document.forms.form;
+      var params = {
+          "lounge_name": form.name.value,
+          "groups": {
+              "first": form.first.value,
+              "second": form.second.value,
+          },
+          "allow_alone": form.allow_alone.value,
+          "owner": {
+            "name": form.owner_name.value,
+          }
+      };
+
+      createRequest(params, ENDPOINTS.Lounge, 'POST')
+        .then(function(response){
+          this.$router.push({
+            'name': 'ShareLounge',
+            'params': {
+                'lounge_id': response.data.lounge_id
+            }
+          });
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
     }
   },
   created(){
