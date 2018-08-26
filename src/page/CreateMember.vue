@@ -10,10 +10,10 @@
           input.input__text#name(type="text" name="name" placeholder="自分の名前を入力")
           p.field__title 所属グループを選択する
           div.field
-            input#first(type="radio" name="first")
+            input#first(type="radio" name="group" value="first" )
             label(for="first") 男性
           div.field
-            input#second(type="radio" name="second")
+            input#second(type="radio" name="group" value="second" )
             label(for="second") 女性
         a.button(type="submit" @click="register") 登録
 </template>

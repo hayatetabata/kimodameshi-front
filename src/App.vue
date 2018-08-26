@@ -30,6 +30,24 @@ body
   overflow scroll
   -webkit-overflow-scrolling touch
 
+.centered
+  display flex
+  justify-content center
+  align-content center
+  flex-direction column
+  height 100%
+  &.isSpecial:after
+    content: "";
+    width: 200vw;
+    height: 200vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: red;
+    z-index: -1;
+    border-radius: 100%;
+
 a
   text-decoration none
   color white
@@ -55,6 +73,17 @@ pc()
   &.isSub
     color red
     font-size 1rem
+  &.special
+    position: absolute;
+    font-family: 'Great Vibes', cursive;
+    color: #ff0;
+    transform: rotate(-10deg) translateX(-50%);
+    font-size: 4rem;
+    margin: 0;
+    top: 2rem;
+    left: 50%;
+    z-index: 9;
+    white-space: nowrap;
 
 .container
   width 400px

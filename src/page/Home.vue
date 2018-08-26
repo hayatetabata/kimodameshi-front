@@ -17,11 +17,4 @@ export default {
   letter-spacing 1rem
   font-size 1rem
 
-.centered
-  display flex
-  justify-content center
-  align-content center
-  flex-direction column
-  height 100%
-
 </style>

@@ -6,7 +6,7 @@
 
       div.field
         div.url__container.input__text
-          input.url_element(id="link" type="text" :value="link" readonly="readonly")
+          input.url__element(id="link" type="text" :value="link" readonly="readonly")
         div.field__action(@click="copy()") 
           i.fas.fa-clone
 
@@ -41,6 +41,11 @@ export default {
 </script>
 
 <style lang="stylus">
-
+.url 
+  &__element
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255,0.5);
+    width: calc(100% - 4rem);
 
 </style>

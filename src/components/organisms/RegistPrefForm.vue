@@ -18,7 +18,7 @@ export default {
     }
   },
   props: [
-      'member_id', "members"
+      'member_id', "members", "lounge_id"
   ],
   methods: {
     registPref() {
@@ -34,12 +34,12 @@ export default {
         'preferences': preferences
       };
 
-      this.$router.push({name: "WaitingResult"});//TODO Delete here after implemention
+      this.$router.push({name: "Result", params: { lounge_id: "123", member_id: "123" } });//TODO Delete here after implemention
       createRequest(params, ENDPOINTS.Preference, 'POST')
         .then(function(response){
           // handle success
           console.log('Post prefs!!');
-          this.$router.push({name: "WaitingResult"});
+          this.$router.push({name: "Result", params: { lounge_id: "123", member_id: "123" } });
         })
         .catch(function (error) {
           // handle error
