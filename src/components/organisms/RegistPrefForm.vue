@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     div(id="self-member-id" :data-self-member-id="member_id")
-    MemberList
+    MemberList(is_draggable)
     RegistPrefButton(@submit="registPref")
 </template>
 
