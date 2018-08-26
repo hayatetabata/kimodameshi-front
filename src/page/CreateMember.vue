@@ -22,8 +22,11 @@ export default {
     register (e) {
       var form = document.forms.form;
       var img = this.src;
-      upload(img)
+      if (!img) {
+        upload(img)
+      }
       var name = form.name.value;
+      this.$router.push({name: 'WaitingMember', params: {lounge_id: 12345}});
     },
   },
   created(){

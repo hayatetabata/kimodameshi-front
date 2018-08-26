@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     div(id="self-member-id" :data-self-member-id="member_id")
-    MemberList
+    MemberList(:is-draggable="isDraggable")
     RegistPrefButton(@submit="registPref")
 </template>
 
@@ -12,6 +12,11 @@ import {createRequest} from '@/api/util'
 import {ENDPOINTS} from '@/api/url'
 
 export default {
+  data: function () {
+    return {
+      isDraggable: true
+    }
+  },
   props: [
       'member_id'
   ],
