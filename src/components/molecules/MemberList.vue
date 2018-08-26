@@ -1,6 +1,6 @@
 <template lang="pug">
   div(id="member_list")
-    draggable(v-if="{is_draggable}")
+    draggable(v-if="isDraggable")
       div(
         v-for="item in items"
         class="draggable-item"
@@ -31,7 +31,7 @@ export default {
     }
   },
   props: {
-    is_draggable: false
+    isDraggable: false
   },
   components: {
     draggable
