@@ -2,10 +2,7 @@
   div.wrapper
     div.container#register-pref
       h1.title.isMain 希望順位を登録
-      div(id="self-member-id" :data-self-member-id="member_id")
       MemberList(:is-draggable="isDraggable" :members="members")
-      input(type="hidden" id="member_id" :value="member_id")
-      input(type="hidden" id="lounge_id" :value="lounge_id")
       div.button(@click="registPref()") 登録する
 </template>
 
@@ -21,20 +18,15 @@ export default {
       isDraggable: true,
     };
   },
-  props: [
-    'lounge_id', 'member_id'
-  ],
   methods: {
     async registPref() {
       var prefNodes = document.getElementsByClassName('draggable-item');
       var preferences = Array.prototype.map.call(prefNodes, function (prefNode) {
         return prefNode.getAttribute('data-member-id');
       });
-      var selfMemberId = document.getElementById('self-member-id')
-        .getAttribute('data-self-member-id');
 
       var params = {
-        'member_uuid': selfMemberId,
+        'member_uuid': this.$store.route.query.member_id,
         'preferences': preferences
       };
 
@@ -44,8 +36,8 @@ export default {
           throw new Error('Handle error');
       }
       this.$router.push({name: "Result", params: {
-          'lounge_id': document.getElementById('lounge_id').getAttribute('value'),
-          'member_id': document.getElementById('member_id').getAttribute('value'),
+          'lounge_id': this.$store.router.query.lounge_id,
+          'member_id': this.$store.router.query.member_id,
       }});
     }
   },

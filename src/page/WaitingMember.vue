@@ -16,7 +16,6 @@ export default {
   data(){
     return {
       intervalId: null,
-      members: []
     }
   },
   props: [
@@ -26,13 +25,21 @@ export default {
     close () {
       this.$router.push({
         name: 'RegisterPref',
-        params: {lounge_id: this.lounge_id, member_id: this.member_id}
+        params: {
+            lounge_id: this.$store.route.query.lounge_id,
+            member_id: this.$store.route.query.member_id
+        }
       });
     },
   },
+  computed: {
+    members() {
+      return this.$store.state.members;
+    }
+  },
   created () {
     var params = {
-      'lounge_uuid': this.lounge_id
+      'lounge_uuid': this.$store.route.query.lounge_id
     };
     let self = this;
     this.intervalId = window.setInterval(function () {
