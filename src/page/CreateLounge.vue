@@ -61,17 +61,18 @@ export default {
           }
       };
 
-      try {   
-        let response = await createRequest(params, ENDPOINTS.Lounge, 'POST')
-          this.$router.push({
-            'name': 'ShareLounge',
-            'params': {
-                'lounge_id': response.data.lounge_uuid
-            }
-          });
-      } catch (error) {
-        console.log(error);
+
+      let response = await createRequest(params, ENDPOINTS.Lounge, 'POST')
+      if (response.status != 200) {
+          console.log(error);
+          throw new Error('Error handling');
       }
+      this.$router.push({
+        'name': 'ShareLounge',
+        'params': {
+            'lounge_id': response.data.lounge_uuid
+        }
+      });
     }
   }
 }
