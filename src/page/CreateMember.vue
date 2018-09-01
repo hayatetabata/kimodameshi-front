@@ -33,10 +33,9 @@ export default {
     // props
   },
   methods: {
-    register (e) {
+    async register () {
       var form = document.forms.form;
       var src = this.src;
-      var img = null;
       var formData = new FormData();
       if (src) {
           src.generateBlob((blob) => {
@@ -45,23 +44,18 @@ export default {
       }
       formData.append('name', form.name.value);
 
-      var vue = this;
-      createRequest(formData, ENDPOINTS.Member, 'POST')
-        .then(function(response){
-          // handle success
-          console.log('Post member data');
-          vue.$router.push({
+      try {
+          let response = await createRequest(formData, ENDPOINTS.Member, 'POST');
+          this.$router.push({
             'name': 'WaitingMember',
             'params': {
-                'lounge_id': response.data.lounge_uuid,
+                'lounge_id': this.$store.state.query.lounge_id,
                 'member_id': response.data.member_uuid,
             }
           });
-        })
-        .catch(function (error) {
-          // handle error
+      } catch (error) {
           console.log(error);
-        })
+      }
     },
   },
   created(){
