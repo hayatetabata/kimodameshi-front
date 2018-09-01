@@ -17,21 +17,7 @@ import {ENDPOINTS} from '@/api/url'
 export default {
   name: "RegisterPref",
   data () {
-    var params = {
-      'lounge_uuid': this.lounge_id
-    };
-    let self = this
-    self.members = [];
-    createRequest(params, ENDPOINTS.Member, 'GET')
-        .then((response) => {
-            self.members = response.data['members'];
-        })
-        .catch((error) => {
-          // handle error
-          console.log(error);
-        });
     return {
-      members: self.members,
       isDraggable: true,
     };
   },
@@ -65,6 +51,11 @@ export default {
   },
   created(){
     // when created
+  },
+  computed: {
+    members () {
+        return this.$store.state.members;
+    }
   },
   components: {
     MemberList,
