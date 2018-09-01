@@ -6,12 +6,12 @@
       form(id="form")
 
         input.input__text(type="text" name="name" placeholder="結界の名前を入力")
-
+        
         div.field__group
           p.field__title グループのラベルをカスタマイズ
           input.input__text(type="text" name="first" placeholder="例：男性")
           input.input__text(type="text" name="second" placeholder="例：女性")
-
+        
         div.field__group
           p.field__title オーナーもメンバーとして参加する
 
@@ -61,18 +61,17 @@ export default {
           }
       };
 
-
-      let response = await createRequest(params, ENDPOINTS.Lounge, 'POST')
-      if (response.status != 200) {
-          console.log(response.data);
-          throw new Error('Error handling');
+      try {   
+        let response = await createRequest(params, ENDPOINTS.Lounge, 'POST')
+          this.$router.push({
+            'name': 'ShareLounge',
+            'params': {
+                'lounge_id': response.data.lounge_uuid
+            }
+          });
+      } catch (error) {
+        console.log(error);
       }
-      this.$router.push({
-        'name': 'ShareLounge',
-        'params': {
-            'lounge_id': response.data.lounge_uuid
-        }
-      });
     }
   }
 }
