@@ -21,12 +21,10 @@ export default {
   name: "ShowLounge",
   data(){
     return {
-      link: 'http://192.168.11.28:8080/lounge/'+ this.lounge_id +'/members/create',
+      link: 'http://192.168.11.28:8080/lounge/'
+        + this.$store.state.route.query.lounge_id +'/members/create',
     }
   },
-  props: [
-    'lounge_id'
-  ],
   methods: {
     copy () {
       document.getElementById('link').select();
